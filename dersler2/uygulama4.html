@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//10 dan 100 arasındaki sayıları yazdır
+ 
+/*for(var i=10;i<=100;i++){
+    console.log(i);
+}
+*/
+//10 ve 100 arasındaki sayıları 5 er 5 er yazır
+/*var i=10;
+while(i<=100){
+    console.log(i);
+    i=i+5;
+}
+*/
+//kullanıcı adı ve parola kontrolunden geçene kadar kullanıcı bilgilerini kullanıcıdan iste
+ 
+/*
+
+
+var kullaniciAdii=prompt("kullanici adı giriniz:");
+if (kullaniciAdi=='esra'){
+    console.log("doğru ismi buldunuz");
+}
+
+else {
+    console.log("yanlış buldunuz");
+}
+var sifree=prompt('sifre giriniz?');
+if(sifre=='123456'){
+    console.log("sifreyi doğru girdiniz");
+}
+ else{
+    console.log("sifreyi yanlış girdiniz");
+ }*/
+ var k_username ="quest";
+ var k_password="12345";
+ var logeddin=false;
+ while(logeddin==false){
+ var username=prompt("kullanıcı adı :");
+ var password=prompt("parola:");
+
+ if((k_username==username) && (k_password==password)){
+    console.log("giriş yapıldı");
+    logeddin=true;
+ 
+
+
+ 
+ }
+ else{
+    console.log("hatalı giriş yapıldı");
+ } 
+}
+ </script>
+    
+</body>
+</html>
