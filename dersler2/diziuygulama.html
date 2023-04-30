@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var now=2018;
+        var models=['toyata','mazda','mercedes','opel'];
+        var years=['2015','2012','2016','2014'];
+        console.log(models)
+        var model=prompt("model giriniz:");
+        var year=prompt("model yılını giriniz:");
+        models.push(model);
+        years.push(year);
+
+
+        now=2018;
+        for(var i=0;i<=models.length;i++){
+            console.log(models[i]+'  '+years[i]+'model ve '+(now-years[i])+' yaşında bir araçtır');
+
+        }
+    </script>
+
+</body>
+</html>
