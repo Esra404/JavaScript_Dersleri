@@ -1,0 +1,83 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List Uygulaması</title>
+ </head>
+ <body>
+    <h1 id="header">TODO LIST UYGULAMASI</h1>
+    <ul id="items_8">
+    <li id="item_8" class="todoitem">
+        <input type="checkbox">08.00 :uyanma
+    </li>
+    <li id="item_9" class="todoitem">
+        <input type="checkbox">09.00 :kahvaltı
+    </li>
+    <li id="item_10" class="todoitem">
+        <input type="checkbox">10.00 :işe varış
+    </li>
+    <li id="item_11" class="todoitem">
+        <input type="checkbox">11.00 :mesai
+    </li>
+    <li id="item_12" class="todoitem">
+        <input type="checkbox">12.00 :mesai
+    </li>
+    <li id="item_13" class="todoitem">
+        <input type="checkbox">13.00 :öğle yemeği
+    </li>
+    <li id="item_14" class="todoitem">
+        <input type="checkbox">14.00 :toplantı
+    </li>
+    <li id="item_15" class="todoitem">
+        <input type="checkbox">15.00 :çay molası
+    </li>
+    <li id="item_16" class="todoitem">
+        <input type="checkbox">16.00 : mesai
+    </li>
+    <li id="item_17" class="todoitem">
+        <input type="checkbox">17.00 : mesai
+    </li>
+    <li id="item_18" class="todoitem">
+        <input type="checkbox">18.00 : mesai
+    </li>
+    <li id="item_19" class="todoitem">
+        <input type="checkbox">19.00 : iş çıkışı
+    </li>
+    <li id="item_20" class="todoitem">
+        <input type="checkbox">20.00 : eve varış
+    </li>
+    <li id="item_21" class="todoitem">
+        <input type="checkbox">21.00 : televizyon
+    </li>
+    <li id="item_22" class="todoitem">
+        <input type="checkbox">21.00 : hazırlık
+    </li>
+    <li id="item_23" class="todoitem">
+        <input type="checkbox">22.00 : uyuma
+    </li>
+    <li id="item_24" class="todoitem">
+        <input type="checkbox">23.00 : uyuma
+    </li>
+    
+
+    </ul>
+    <script>
+       // var listItems=document.querySelectorAll('li');
+        // console.log(listItems);
+     var date = new Date();
+     var hour =date.getHours();
+     var element;
+
+     for (var i=hour;i>=8; i--){
+        element=document.getElementById('item_'+i);
+        element.style.textDecoration='line-through';
+        element.querySelector('input').checked=true;
+     }
+
+
+    </script>
+ </body>
+ </html>
+
