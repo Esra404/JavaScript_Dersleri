@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+       /* var sonuc;
+        function Topla(sayi1, sayi2) {
+          return sayi1 + sayi2;         // sayi1 ve sayi2 toplamını döndürür
+        }
+        sonuc = Topla(10, 5);
+        alert(sonuc);
+        var sonuc;
+        function Topla(sayi1,sayi2){
+            return sayi1+sayi2;
+        }
+        sonuc =Topla (9, 0);
+        alert(sonuc);
+
+
+
+
+  function celsiusCevir(fahrenhayt) {
+      return (5 / 9) * (fahrenhayt - 32);
+  }
+  alert(celsiusCevir(50));
+  alert(celsiusCevir(104));
+
+
+
+  var sonuc;
+  function hesapla (sayi1,sayi2){
+    return sayi1%sayi2;
+
+  }
+    sonuc=hesapla(7,4);
+    alert(sonuc);
+
+
+    var sonuc;
+    function pisagor(sayi1,sayi2,sayi3){
+    return ((sayi1*sayi2)/(sayi3));
+}
+
+    sonuc=pisagor(2,5,7);
+    alert(sonuc);
+
+
+var sonuc;
+  function celsiusCevir(fahrenhayt) {
+      return (5 / 9) * (fahrenhayt - 32);
+  }
+  alert(celsiusCevir);
+
+
+  var tarih = new Date();
+  var saat = tarih.getHours();
+  if(saat < 18) {
+      alert("iyi günler");
+  } 
+
+
+  var tarih = new Date();
+  var saat = tarih.getHours();
+  if(saat < 30) {
+      alert("günaydın");
+  } else if(saat < 18) {
+      alert("iyi günler");
+  } else {
+      alert("iyi akşamlar")
+  }
+
+  var tarih = new Date();
+  var gun = tarih.getDay();
+  switch(gun) {
+    case 0:
+      alert("pazar");
+    break;
+    case 1:
+      alert("pazartesi");
+    break;
+    case 2:
+      alert("salı");
+    break;
+    case 3:
+      alert("çarşamba");
+    break;
+    case 4:
+      alert("perşembe");
+    break;
+    case 5:
+      alert("cuma");
+    break;
+    case 6:
+      alert("cumartesi");
+  }
+  var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+  var i, listeUzunluk = liste.length;
+
+  for(i = 0; i < listeUzunluk; i++) {
+    alert(liste[i]);
+  }
+  var i, toplam = 0;
+
+for(i = 0; i < 5; i++) {
+  toplam += i;
+}
+alert(toplam);
+
+
+var i,toplam=0;
+for (i=0;i<5;i++){
+    toplam +=i;
+
+}
+alert(toplam);
+
+
+var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+  var i;
+
+  for(i = 0, listeUzunluk = liste.length; i < listeUzunluk; i++) {
+    alert(liste.length[i]);
+  }
+  var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+  var i = 0;
+
+  for( ; ; i++) {
+    alert(liste[i]);
+    if(i == 6) break;
+  }
+/*
+var i, sonuc = 0;
+
+for(i = 0; i < 11; i += 2) {
+  sonuc += i;
+}
+alert(sonuc);
+
+var i, sonuc = 0;
+
+  for(i = 0; i < 11;) {
+    sonuc += i;
+    i += 2;
+  }
+  alert(sonuc);
+*/
+/*
+var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+
+for(i in liste) {
+  alert(liste[i]);
+}
+
+
+
+var araba = {marka:"Fiat", model:"500", renk:"beyaz"}
+
+for(i in araba) {
+  alert(i + " - " + araba[i]);
+}
+var i = 0, toplam = 0;
+
+while(i < 10) {
+  toplam += i;
+  i++;
+}
+alert(toplam);
+
+var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+  var i, listeUzunluk = liste.length;
+
+  for(i = 0; i < listeUzunluk; i++) {
+    if(i == 3) break;
+    alert(liste[i]);
+  }
+  alert("Merhaba JavaScript");
+
+var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+  var i, listeUzunluk = liste.length;
+
+  for(i = 0; i < listeUzunluk; i++) {
+    if(i == 3) continue;
+    alert(liste[i]);
+  }
+  alert("Merhaba JavaScript");
+
+  
+ var liste = ["Elma", "Armut", "Portakal"];
+  alert(Array.isArray(liste));
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste.toString());
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste.join(" / "));
+
+
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  liste.pop();
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  var x = liste.pop();
+  alert(x);
+
+var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  liste.push("Muz");
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  var x = liste.push("Muz");
+  alert(x);
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  liste.shift();
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  var x = liste.shift();
+  alert(x);
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  liste.unshift("Muz");
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  liste[0] = "Muz";
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  delete liste[1];
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  alert(liste);
+  liste.splice(1, 0, "Muz", "Kivi");
+  alert(liste);
+  var liste = ["Elma", "Armut", "Portakal"];
+  var liste1 = ["Muz", "Kivi"];
+  var yeniListe = liste.concat(liste1);
+  alert(yeniListe);
+  var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi"];
+  var yeniListe = liste.slice(1);
+  alert(yeniListe);
+  var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi"];
+  var yeniListe = liste.slice(1, 3);
+  alert(yeniListe);*/
+  var liste = ["Elma", "Armut", "Portakal", "Muz", "Kivi", "Karpuz", "Çilek"];
+  liste.reverse();
+  alert(liste);
+</script>
+
+      
+   
+</html>
