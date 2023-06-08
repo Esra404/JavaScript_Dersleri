@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+
+
+
+
+
+*/
+var dizi=[];
+function rastgeleSayiAta(min ,max){
+    return Math.floor(Math.random()*(max-min));
+
+}
+
+for(var i=0;i<10;i++){
+    var rastgeleSayi=rastgeleSayiAta(1,100);
+    dizi.push(rastgeleSayi)
+}
+console.log(dizi);
+
+
+
+function bulTekSayilar(dizi) {
+  var tekSayilar = [];
+
+  for (var i = 0; i < dizi.length; i++) {
+    if (dizi[i] % 2 !== 0) {
+      tekSayilar.push(dizi[i]);
+    }
+  }
+
+  return tekSayilar;
+}
+var tekSayilar = bulTekSayilar(dizi);
+console.log(tekSayilar);
+
+function birlestirDiziler(dizi, tekSayilar) {
+  var birlesikDizi = dizi.concat(tekSayilar);
+  return birlesikDizi;
+}
+
+var birlesikDizi = birlestirDiziler(dizi, tekSayilar);
+console.log(birlesikDizi);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+function bulTekSayilar(dizi) {
+  var tekSayilar = [];
+
+  for (var i = 0; i < dizi.length; i++) {
+    if (dizi[i] % 2 !== 0) {
+      tekSayilar.push(dizi[i]);
+    }
+  }
+
+  return tekSayilar;
+}
+console.log(tekSayilar);
+*/
+
+    </script>
+
+</body>
+</html>

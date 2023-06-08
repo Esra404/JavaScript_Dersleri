@@ -82,7 +82,7 @@ var bilgiler = [];
   bilgiler[2] = 78;
   alert(bilgiler.length);
   alert(bilgiler[0]);
-*/
+
 var bilgiler = [];
   bilgiler["ismim"] = "Yusuf Sefa";
   bilgiler["soyIsmim"] = "SEZER";
@@ -90,8 +90,89 @@ var bilgiler = [];
   alert(bilgiler.length);
   alert(bilgiler[0]);
 
+  alert(typeof(undefined));
 
 
+var twoSum = function(nums, target) {
+    let result = 0;
+    for(let i = 0; i < nums.length; i++) {
+        for(let j = i + 1; j < nums.length; j++) {
+            if(nums[j] == target - nums[i]) {
+                return [i, j];
+            }
+        }
+    }
+};
+function rastgeleSayiAta(min, max) {
+  var aralik = max - min + 1;
+  var rastgeleSayi = Math.floor(Math.random() * aralik) + min;
+  return rastgeleSayi;
+}
+
+var minDeger = 1;
+var maxDeger = 100;
+var rasgeleSayi = rastgeleSayiAta(minDeger, maxDeger);
+console.log(rasgeleSayi);
+***********************************************************************
+
+function rastgeleSayiAta(baslangic, bitis) {
+  var aralik = bitis - baslangic + 1;
+  var rastgeleSayi = Math.floor(Math.random() * aralik) + baslangic;
+  return rastgeleSayi;
+}
+
+var baslangicDegeri = 1;
+var bitisDegeri = 100;
+var rasgeleSayi = rastgeleSayiAta(baslangicDegeri, bitisDegeri);
+console.log(rasgeleSayi);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+var twoSum = function(nums, target) {
+        
+        let res = [];
+        
+        for(let i = 0; i < nums.length; i++){     
+            let diff = target - nums[i];
+            
+            if(diff in res){
+                return [res[diff], i];
+            }        
+            res[nums[i]] = i;        
+        }
+          
+    };
 
 
 

@@ -1,0 +1,196 @@
+ 
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>algoritmaornekleri.com</title>
+</head>
+ 
+<body>
+	<script>
+    /*
+	<h2>Yazılı Ortalaması Hesapla</h2>
+	<input placeholder="1. Yazılıyı Girin" type="text" id="txtY1">
+	<input placeholder="2. Yazılıyı Girin" type="text" id="txtY2">
+	<button id="btn">HESAPLA</button>
+	<div id="sonucOrtalama"></div>
+	<div id="sonucDurum"></div>
+	*/
+	 
+        /*
+		function Hesapla()
+		{
+			var durum="";
+			var y1=Number(document.getElementById("txtY1").value);
+			var y2=Number(document.getElementById("txtY2").value);
+			var ortalama=(y1+y2)/2;
+			if(ortalama>=50)
+				{
+					durum="Geçti";
+				}
+			else
+				{
+					durum="Kaldı";
+				}
+			document.getElementById("sonucOrtalama").innerHTML="Ortalama : "+ortalama;
+			document.getElementById("sonucDurum").innerHTML="Durum : "+durum;
+		}
+		
+		var hesapBtn=document.getElementById("btn");
+		hesapBtn.onclick=Hesapla;
+		
+        //10 ile 15 sayıları arasındaki tamsayıların çarpımını hesaplayıp ekrana yazdıran Javacsript kodunu yazınız.
+c=1;
+for(s=10;s<=15;s++){
+    c=c*s;
+}
+alert (c);
+
+//2. 100 ile 200 sayılarının arasında 23 ün katı olan sayıların toplamını hesaplayıp ekrana yazdıran Javascript kodunu yazınız.
+
+var toplam=0;
+for (i=100;i<=200;i++){
+    if(i%23==0 ){
+		toplam +=i;
+
+	}
+}
+console.log("sayıların toplamı = ",toplam);
+
+t=0;
+for (s=0; s<=200; s=s+23)
+{
+   if (s >= 100)
+   {
+   t = t + s;
+   }
+}
+alert (t);
+
+//. x y ve z sayılarının en küçüğünü ekrana yazan javascript kodunu yazınız.
+
+var x=2,y=3,z=23;
+
+if(x>y){
+	if(x>z){
+		console.log("x en büyüktür");
+	}
+	else if(y>z){
+		console.log("z en küçüktür")
+	
+	}
+	else{
+		console.log("y en küçüktür");
+	}
+}
+if(y>x){
+	if(y>z){
+		console.log("y en büyüktür");
+	}
+	else if(x>z){
+		console.log("z en küçüktür")
+	
+	}
+	else{
+		console.log("x en küçüktür");
+	}
+}
+if(z>y){
+	if(z>x){
+		console.log("z en büyüktür");
+	}
+	else if(y>x){
+		console.log("x en küçüktür")
+	
+	}
+	else{
+		console.log("z en küçüktür");
+	}
+}
+
+//4. 100 lük değerlendirme sisteminde dönem içinde 55 puan üzerinden 50 puan toplayan 
+//bir öğrencinin B+ harf notu alması için (86 puan) %45 I hesaplanacak final sınavında 100 üzerinden en az kaç puan alması gerektiğini ekrana yazan javascript kodunu yazınız.
+
+//80 puan alması gerekir
+
+n = 50;
+x = 86-n;
+y = x*100/45;
+alert(y);
+
+//5. Günlük 210 ton yağ rafine etme ve işleme kapasitesine sahip bir fabrikanın 
+//7550 tonluk üretimi karşılamak için kaç gün çalışması gerektiğini ve çalışma sonucu kaç ton zeytinyağı üretileceğini hesaplayan Javascript kodunu yazınız.
+sonuc=0;
+toplam=0;
+for(i=0;i<=7550;i++){
+	toplam=sonuç+=i;
+	if(toplam==7550){
+		alert("hazne dolmuştur");
+	}
+	else{
+		alert("hazne dolmamıştır");
+	}
+}
+g=0 ;
+u=0 ;
+while (u<=7550)
+{
+u = u + 210 ;
+g = g + 1 ;
+}
+alert (u) ;
+alert (g) ;
+**************************************************************************************************************************************************
+function rastgeleSayiAta(min, max) {
+  var aralik = max - min + 1;
+  var rastgeleSayi = Math.floor(Math.random() * aralik) + min;
+  return rastgeleSayi;
+}
+
+var minDeger = 1;
+var maxDeger = 100;
+var rasgeleSayi = rastgeleSayiAta(minDeger, maxDeger);
+console.log(rasgeleSayi);
+***********************************************************************
+
+function rastgeleSayiAta(baslangic, bitis) {
+  var aralik = bitis - baslangic + 1;
+  var rastgeleSayi = Math.floor(Math.random() * aralik) + baslangic;
+  return rastgeleSayi;
+}
+
+var baslangicDegeri = 1;
+var bitisDegeri = 100;
+var rasgeleSayi = rastgeleSayiAta(baslangicDegeri, bitisDegeri);
+console.log(rasgeleSayi);
+*******************************************************************************************************************************************************
+
+*/
+var kullanıcı_adı=prompt("Adınızı Giriniz");
+alert(kullanıcı_adı);
+var on_bilgi=alert("hoşgeldiniz");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+
+</body>
+</html>
