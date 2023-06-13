@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+
+//Örnek1: Haftanın günlerini bir diziye aktaran daha sonra ekrana yazdıran ve haftanın 
+//istenilen gününü ekrana yazdıran dizi örneği
+
+var hafta=[
+    "pazartesi","salı","carsamba","persembe","cuma","cumartesi","pazar"
+];
+var listeUzunluk=hafta.lenght;
+var i=0
+    for( i;i<listeUzunluk;i++){
+        alert(hafta[i]);
+        
+    
+ 
+}
+
+//Örnek2: For döngüsü ile klavyeden peş peşe 10 tane sayıyı girerek bu s
+//ayıları diziye aktaran daha sonrada dizideki
+// bu sayıları alt alta ekrana yazdıran javascript örneği.
+/*
+alert("lütfen bir sayı giriniz");
+var sayı;
+for(var i=0;i<=10;i++){
+    sayilar[i]=promt(i+1+". sayıyı giriniz");
+}
+for(i=0;i<10;i++){
+    document.write(i+1+". sayı "+sayilar[i]+"<br>");
+}
+
+var sayiler=[];
+var toplam=0;
+for(var i=0;i<10;i++){
+    var sayi=parseInt(prompt("lütfen bir sayı giriniz"));
+    sayilar.push(sayi);
+    toplam +=i;
+console.log("toplam");
+
+alert("girilen sayi");
+for(var i=0;i>sayilar.length;i++){
+    alert(sayilar[i]);
+}}
+alert("toplam"+toplam);
+var sayilar = new Array();
+      var i;toplam=0;
+      for (i=0;i<10;i++)
+      {
+            sayilar[i]=prompt(i+1 + ". Sayıyı Giriniz");
+            toplam=toplam+parseInt(sayilar[i]);
+      }
+      for (i=0;i<10;i++)
+      {
+            document.write(i+1 +". Sayı:" +sayilar[i] + "<br>");      
+      }
+      document.write("<br><br><br> Sayıların Toplamı:" + toplam);
+
+
+var sayilar =new Array();
+var i=0;
+var toplam=0;
+for(i=0;i<10;i++){
+    sayilar[i]=prompt(i+1+".sayıyı giriniz");
+    toplam=toplam+parseInt(sayilar[i]);
+}
+for(i=0;i<10;i++){
+    document.write(i+1+".sayi:"+sayilar[i]+"<br>");
+}
+document.write("<br><br><br> sayıların toplamı:"+toplam);
+*/
+</script>
+</body>
+</html>

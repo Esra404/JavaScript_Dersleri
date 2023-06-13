@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .todo-container {
+      margin-top: 20px;
+    }
+    
+    .todo-item {
+      margin-bottom: 10px;
+    }
+    
+    .todo-item span {
+      margin-right: 10px;
+    }
+    
+    .add-todo {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .add-todo input {
+      padding: 5px;
+      width: 200px;
+    }
+    
+    .add-todo button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todo List</h1>
+  
+  <div class="todo-container">
+    <div class="todo-item">
+      <span>1.</span>
+      <span>Yapılacak görev 1</span>
+    </div>
+    <div class="todo-item">
+      <span>2.</span>
+      <span>Yapılacak görev 2</span>
+    </div>
+    <!-- Diğer görevler buraya eklenecek -->
+  </div>
+  
+  <div class="add-todo">
+    <input type="text" placeholder="Yeni görev ekle">
+    <button onclick="addTodo()">Ekle</button>
+  </div>
+  
+  <script>
+    var todos = [
+      "Yapılacak görev 1",
+      "Yapılacak görev 2"
+      // Diğer görevler buraya eklenecek
+    ];
+
+    function showTodos() {
+      var todoContainer = document.querySelector('.todo-container');
+      todoContainer.innerHTML = '';
+      
+      for (var i = 0; i < todos.length; i++) {
+        var todoItem = document.createElement('div');
+        todoItem.classList.add('todo-item');
+        
+        var todoNumber = document.createElement('span');
+        todoNumber.innerText = (i + 1) + '.';
+        
+        var todoText = document.createElement('span');
+        todoText.innerText = todos[i];
+        
+        todoItem.appendChild(todoNumber);
+        todoItem.appendChild(todoText);
+        
+        todoContainer.appendChild(todoItem);
+      }
+    }
+
+    function addTodo() {
+      var input = document.querySelector('input');
+      var todo = input.value;
+      
+      if (todo !== '') {
+        todos.push(todo);
+        showTodos();
+        input.value = '';
+      }
+    }
+
+    showTodos();
+  </script>
+</body>
+</html>

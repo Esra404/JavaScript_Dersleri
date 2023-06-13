@@ -18,6 +18,7 @@ document.querySelector('#deleteAll').onclick=function(){
     elements.forEach(function(items){
         item.style.display='none';
     });
+
 }
 function ToogleDeleteButton(){
     var checkList=document.querySelectorAll('.checked');
