@@ -127,7 +127,7 @@ flex: none;
 order: 0;
 flex-grow: 0;
 }
-.container-iki .list-group{
+.container-iki .buton-1{
     
 box-sizing: border-box;
 
@@ -153,73 +153,22 @@ flex: none;
 order: 1;
 align-self: stretch;
 flex-grow: 0;
-}
-.container-iki .list-group.buton-1{
-    
-box-sizing: border-box;
+width: 172px;
+height: 28px;
 
-/* Auto layout */
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 28px;
 
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 15px;
-gap: 10px;
+color: #397CE1;
 
-width: 360px;
-height: 58px;
-
-background: #FFFFFF;
-border: 3px solid #397CE1;
-border-radius: 20px;
 
 /* Inside auto layout */
 
 flex: none;
-order: 1;
-align-self: stretch;
+order: 0;
 flex-grow: 0;
 }
-.container-iki .list-group.buton-2{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 15px;
-gap: 10px;
 
-width: 360px;
-height: 58px;
-
-background: #FFFFFF;
-border-radius: 20px;
-
-/* Inside auto layout */
-
-flex: none;
-order: 2;
-align-self: stretch;
-flex-grow: 0;
-}
-.container-iki .list-group.buton-3{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 15px;
-gap: 10px;
-
-width: 360px;
-height: 58px;
-
-background: #FFFFFF;
-border-radius: 20px;
-
-/* Inside auto layout */
-
-flex: none;
-order: 3;
-align-self: stretch;
-flex-grow: 0;
-}
