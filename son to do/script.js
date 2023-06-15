@@ -78,7 +78,7 @@ function listeKontrol(){
     addItem();
 	}else{
 		console.log("Yeni liste eklenmedi");
-    renderList();
+    renderList(  );
 	}
 
 }
