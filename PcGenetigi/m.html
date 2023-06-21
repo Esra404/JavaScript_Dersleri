@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esra</title>
+    <style>
+        .Baslik{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="Baslik">Hello World!</h1>
+    <h2 class="Baslik">Merhaba Dünya</h2>
+    <h3 class="Baslik">Merhaba Uzay</h3>
+    <input type="text" id="isim"/><br/><br/>
+    <!-- <input type="button" id="dugme" onclick="yazdir()" value="Yazdir"/> -->
+    <input type="button" value="Yazdır" id="dugme"/>
+
+    <script>
+        //alert("Hello World!");
+        //document.write("Hello World!");
+        //console.log("Hello World");
+        // var isim = "Esra";
+        // var isim = "mustafa";
+
+        // let isim = "Esra";
+        // isim = "Mustafa";
+        // document.write(isim);
+
+        // let isim = prompt("İsim Girin: ");
+        //document.write("Merhaba " + isim);
+        //alert("Merhaba " + isim);
+        //console.log("Merhaba " + isim);
+
+        // function yazdir(){
+        //     let isim = document.getElementById("isim").value;
+        //     let element = document.createElement("h2");
+        //     element.innerHTML = "Merhaba " + isim;
+        //     document.body.appendChild(element);
+        // }
+
+        let button = document.getElementById("dugme");
+        button.addEventListener("click", ()=>{
+            let div = document.createElement("div");
+            let parag = document.createElement("p");
+            parag.innerHTML = "<strong>Hello World!</strong>";
+            div.appendChild(parag);
+            document.body.appendChild(div);
+
+           let basliklar = document.querySelectorAll(".Baslik");
+           basliklar.forEach((item) => {
+                item.innerHTML="Test";
+           });
+   
+
+        })
+/*
+
+    <div class="container">
+        <h1 id="title">To Do List</h1>
+        <form action="#">
+            <input type="text" id="inputText">
+            <input type="submit" id="addToDo" value="Add">
+            <input type="submit" id="clearToDo" value="Clear">
+        </form>
+        <div class="to-dos" id="toDoContainer">
+
+        </div>
+    </div>
+    
+
+        
+let addToDoButton = document.getElementById('addToDo');
+let toDoContainer = document.getElementById('toDoContainer');
+let inputText = document.getElementById('inputText');
+let clearToDo = document.getElementById('clearToDo');
+
+addToDoButton.addEventListener('click', function(){
+    let paragraph = document.createElement('p');
+    paragraph.classList.add('paragraph-styling');
+    toDoContainer.appendChild(paragraph);
+    paragraph.innerHTML = inputText.value;
+    inputText.value = "";
+
+    paragraph.addEventListener('click', function(){
+        paragraph.style.textDecoration = 'line-through';
+    });
+
+    paragraph.addEventListener('dblclick', function(){
+        toDoContainer.removeChild(paragraph);
+    });
+
+    clearToDo.addEventListener('click', function(){
+        paragraph.remove();
+    })
+
+})*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To Do List App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>TO DO LİST UYGULAMASI </h1>
+    <div>
+    <input type="text" id="listAdd">
+    <input type="button" value="Yeni Liste Ekle" id="dugme">
+    </div>
+    <div  class="to-dos" id="toDoContainer">
+
+
+    </div>
+
+
+<script >
+let addToButton=document.getElementById('dugme');
+let toDoContainer=document.getElementById('toDoContainer');
+let listAdd=document.getElementById('listAdd');
+
+
+addToButton.addEventListener('click',function(){
+    let confirmResult=confirm("bu öğeyi eklemek istediğinizden emin misiniz");
+    if(confirmResult){
+    let paragraf=document.createElement('p');
+    paragraf.classList.add('paragraph-styling');
+    toDoContainer.appendChild(paragraf);
+    paragraf.innerHTML=listAdd.value;
+    listAdd.value="";
+    }
+    else{
+        listAdd.value="";
+    }
+    
+});
+
+
+
+
+
+
+    </script>
+</body>
+</html>
