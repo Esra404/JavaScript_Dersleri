@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List App</title>
+    <title> To Do List App</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -13,33 +13,48 @@
         <input type="button" value="Yeni Liste Ekle" id="dugme">
     </div>
     <div class="to-dos" id="toDoContainer"></div>
+    <p id="output"></p>
 
     <script>
+        function getInput() {
+            let userInput = prompt("Oluşturmak istediğiniz listeyi girin:");
+            if (userInput) {
+                document.getElementById("output").textContent = userInput;
+            } else {
+                document.getElementById("output").textContent = "Liste değeri girilmedi veya iptal edildi.";
+            }
+        }
+
         let addToButton = document.getElementById('dugme');
         let toDoContainer = document.getElementById('toDoContainer');
         let listAdd = document.getElementById('listAdd');
+        let output = document.getElementById('output');
+        let listItems = []; // Dizi oluşturuldu
 
         addToButton.addEventListener('click', function() {
             let confirmResult = confirm("Bu öğeyi eklemek istediğinizden emin misiniz");
             if (confirmResult) {
-                let paragraf = document.createElement('p');
-                paragraf.classList.add('paragraph-styling');
-                toDoContainer.appendChild(paragraf);
-                paragraf.innerHTML = listAdd.value;
-                listAdd.value = "";
-
-                paragraf.addEventListener('click', function() {
-                    if (paragraf.classList.contains('completed')) {
-                        paragraf.classList.remove('completed');
-                    } else {
-                        paragraf.classList.add('completed');
-                    }
-                });
+                let listItem = listAdd.value;
+                if (listItem) {
+                    listItems.push(listItem); // Listeye öğe eklendi
+                    renderList(); // Listeyi güncelleyen fonksiyon çağırıldı
+                    listAdd.value = ""; // Input alanı temizlendi
+                }
             } else {
                 listAdd.value = "";
             }
         });
+
+        function renderList() {
+            toDoContainer.innerHTML = ""; // Önceki listeyi temizle
+
+            listItems.forEach(function(item) {
+                let paragraf = document.createElement('p');
+                paragraf.classList.add('paragraph-styling');
+                paragraf.textContent = item;
+                toDoContainer.appendChild(paragraf);
+            });
+        }
     </script>
 </body>
 </html>
-

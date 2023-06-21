@@ -9,17 +9,22 @@
 <body>
     <h1>TO DO LİST UYGULAMASI </h1>
     <div>
-    <input type="text" id="listAdd">
+   <!-- <input type="text" id="listAdd">
     <input type="button" value="Yeni Liste Ekle" id="dugme">
     </div>
     <div class="to-dos" id="toDoContainer">
 
-
+      --> 
     </div>
 
 
 <script >
-let addToButton=document.getElementById('dugme');
+
+
+
+
+
+let addToButton=document.getElementById('userInput');
 let toDoContainer=document.getElementById('toDoContainer');
 let listAdd=document.getElementById('listAdd');
 let paragraff=document.getElementById('paragraff');
@@ -43,42 +48,18 @@ addToButton.addEventListener('click',function(){
         listAdd.value="";
     }
 
-
-
-
-    function paragraff(paragraf){
-      let paragraf
-
-    }
     
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+paragraff.addEventListener('click',function(){
+})
+function getInput() {
+            let userInput = prompt("Oluşturmak istediğiniz listeyi girin:");
+            if (userInput) {
+                document.getElementById("output").textContent =  userInput;
+            } else {
+                document.getElementById("output").textContent = "Liste değeri girilmedi veya iptal edildi.";
+            }
+        }
 
 
     /*    
@@ -150,6 +131,9 @@ addToButton.addEventListener('click',function(){
 
 
 */
+    
+<button onclick="getInput()">Yeni Liste Ekle</button>
+<p id="output"></p>
 
 
 
