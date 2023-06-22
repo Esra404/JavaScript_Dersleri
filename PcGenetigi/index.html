@@ -9,22 +9,21 @@
 <body>
     <h1>TO DO LİST UYGULAMASI </h1>
     <div>
-   <!-- <input type="text" id="listAdd">
-    <input type="button" value="Yeni Liste Ekle" id="dugme">
+   <!-- <input type="text" id="listAdd">-->
+    <input type="button" value="Yeni Liste Ekle" id="userInput">
     </div>
     <div class="to-dos" id="toDoContainer">
 
-      --> 
+      
     </div>
-
+    
+    <button onclick="getInput()" id="userInput">Yeni Liste Ekle</button>
+    <p id="output"></p>
+    
+    
 
 <script >
-
-
-
-
-
-let addToButton=document.getElementById('userInput');
+let addToButton=document.getElementById('output');
 let toDoContainer=document.getElementById('toDoContainer');
 let listAdd=document.getElementById('listAdd');
 let paragraff=document.getElementById('paragraff');
@@ -46,9 +45,7 @@ addToButton.addEventListener('click',function(){
 }
     else{
         listAdd.value="";
-    }
-
-    
+    }   
 })
 paragraff.addEventListener('click',function(){
 })
@@ -57,7 +54,7 @@ function getInput() {
             if (userInput) {
                 document.getElementById("output").textContent =  userInput;
             } else {
-                document.getElementById("output").textContent = "Liste değeri girilmedi veya iptal edildi.";
+                document.getElementById("output").textContent = "";
             }
         }
 
@@ -132,7 +129,7 @@ function getInput() {
 
 */
     
-<button onclick="getInput()">Yeni Liste Ekle</button>
+<button onclick="getInput()" id="userInput">Yeni Liste Ekle</button>
 <p id="output"></p>
 
 

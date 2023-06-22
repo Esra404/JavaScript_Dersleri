@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Uygulamam</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List Uygulamam</h1>
+    <input type="text" id="taskInput">
+    <button onclick="addTask()">Ekle</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let task = input.value;
+            
+            if (task !== "") {
+                let listItem = document.createElement("li");
+                listItem.appendChild(document.createTextNode(task));
+                
+                let deleteButton = document.createElement("button");
+                deleteButton.appendChild(document.createTextNode("Sil"));
+                deleteButton.addEventListener("click", function() {
+                    this.parentNode.remove();
+                });
+                
+                listItem.appendChild(deleteButton);
+                listItem.addEventListener("click", function() {
+                    this.classList.toggle("completed");
+                });
+                
+                let taskList = document.getElementById("taskList");
+                taskList.appendChild(listItem);
+                
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
