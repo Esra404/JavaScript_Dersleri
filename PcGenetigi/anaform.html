@@ -22,20 +22,35 @@
             let button = document.createElement('button');
             button.textContent = userInput;
             button.id="liButton";
-
-            button.addEventListener("click",function(addTask){
-            let input=documnet.createElement("input");
-            input.setAttribute('id','taskInput');
-            input.textContent='bu bir input elemnrtidir.';
-            document.body.appendChild(li);
-            let button2=document.createElement("buton2");
-            let ulYapisi=document.createElement("ul");
-            input.setAttribute('id','taskList');
-            
-                  
+            button.addEventListener("click",function(){
+                let input=document.createElement("input");
+                input.setAttribute('id','taskInput');
+              //  input.textContent='bu bir input elemnrtidir.';
+                document.body.appendChild(li);//input olacak
 
 
+                let button2=document.createElement("buton2");//button olacak  create elemnt neden button iki??
+                //button2.addEventListener("click",addTask);
+                //document.body.appendChild(button2);   ana yere eklemeyi unutmuşum 
+                let ulYapisi=document.createElement("ul");
+                ulYapisi.setAttribute('id','taskList');
+                document.body.appendChild(ulYapisi);
             });
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = ' Sil';
+            deleteButton.addEventListener("click", function() {
+                listItem.remove();
+            });
+                 
+            listItem.appendChild(button);
+            listItem.appendChild(deleteButton);
+            document.getElementById("toDoContainer").appendChild(listItem);
+
+        } else {
+            document.getElementById("output").textContent = "";
+        }
+    }
+        
             function addTask() {
             let input = document.getElementById("taskInput");
             let task = input.value;
@@ -43,6 +58,7 @@
             if (task !== "") {
                 let listItem = document.createElement("li");
                 listItem.appendChild(document.createTextNode(task));
+
                 
                 let deleteButton = document.createElement("button");
                 deleteButton.appendChild(document.createTextNode("Sil"));
@@ -61,6 +77,26 @@
                 input.value = "";
             }
         }
+    
+      
+          
+       
+            
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
        <h1>To-Do List Uygulamam</h1>
@@ -79,22 +115,7 @@
                 document.body.appendChild(div);
                 
             });
-  */          
-            let deleteButton = document.createElement('button');
-            deleteButton.textContent = ' Sil';
-            deleteButton.addEventListener("click", function() {
-                listItem.remove();
-            });
-            
-            listItem.appendChild(button);
-            listItem.appendChild(deleteButton);
-            
-            document.getElementById("toDoContainer").appendChild(listItem);
-        } else {
-            document.getElementById("output").textContent = "";
-        }
-    };
-
+  */    
 </script>
 
 </body>
