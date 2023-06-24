@@ -33,7 +33,7 @@ function renderList() {
     });
 
     var label = document.createElement('label');
-    label.className = 'form-check-label';
+    label.className = 'form-check-label';$$$$$$$$$$
     label.htmlFor = 'checkItem' + index;
     label.textContent = item;
 

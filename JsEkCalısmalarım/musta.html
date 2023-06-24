@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        button{
+            background-color: blue;
+            color: white;
+            width: 300;
+            height: 300;
+        }
+
+        #li_id{
+            color: blue;
+        }
+
+    </style>
+
+  </head>
+  <body>
+
+    <div id="meyve_div" class="meyve_class">
+        <ul id="meyve_liste" class="mevye_liste_class"></ul>
+    </div>
+
+    <button class="btn_class" id="btn_id">Ekle</button>
+    <script>
+      // Prompttan meyve isimleri alalım
+      // Bunları liste olarak ekrana yazalım.
+      // Bu listeyi stillendirelim.
+
+      let button = document.getElementById("btn_id");
+
+      button.addEventListener("click", function () {
+       let meyveler = [];
+       for(let i = 0; i < 10; i++){
+        let meyveismi = prompt("Meyve Adı Yazın: ");
+
+        if(meyveismi == ""){
+            alert("Meyve ismi boş olamaz!!!");
+            break;
+        }
+        meyveler.push(meyveismi);
+
+        let ul = document.getElementById("meyve_liste");
+        let li = document.createElement("li");
+        li.innerText = meyveler[i];
+        li.setAttribute("class","litem");
+        li.setAttribute("id","li_id");
+        //li.style.color = 'red';
+
+        ul.appendChild(li);
+
+
+       };
+
+      });
+    </script>
+  </body>
+</html>
