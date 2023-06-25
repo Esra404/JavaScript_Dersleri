@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO-DO-LİST UYGULAMASI</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TO DO LİST</title>
+	<style>
+		
+	</style>
 </head>
+
 <body>
-    <h1>TO LİST UYGULAMASI</h1>
-    <button onclick="getInput()" id="userInput">Yeni Liste Ekle</button>
-    <p id="output"></p>
-    <ol class="to-dos" id="toDoContainer">
+	<h1>TO-DO LİST UYGULAMASI</h1>
+	<div class="row">
+		<div class="col-4" id="left">
+			<button class="todo-list" array-index="0">Hobi Listesi</button>
+			<button class="todo-list" array-index="1">Alışveriş Listesi</button>
+			<button class="todo-list" array-index="2">Film Listesi</button>
+		</div>
+		<div class="col-8" id="right"></div>
+	</div>
 
-    </ol>
+	<script>
+		let div = document.getElementById("right");
+		let TODOLISTARRAY = [["1 kg elma", "2kg armut", "süt"], ["model araba yap", "resim kursuna yazıl"], ["installer", "django"]];
+		let buttons = document.getElementsByClassName("todo-list");
+		for (let i = 0; i < buttons.length; i++) {
+			buttons[i].addEventListener("click", evt => {
+				let index = buttons[i].getAttribute("array-index");
+				clearRightDivAndCreateTodoListItems(index);
+			})
+		}
 
-<script>
-    function getInput() {
-        let userInput = prompt("Oluşturmak istediğiniz listeyi girin:");
-        if (userInput) {
-            let listItem = document.createElement('li');
-            
-            let button = document.createElement('button');
-            button.textContent = "To Do List: " + userInput; // Metnin başına "To Do List" ekleniyor
-            button.addEventListener("click", function() {
-                console.log("Tıklanan öğe: " + userInput);
-            });
-         
-           
-            
+		function clearRightDivAndCreateTodoListItems(index) {
+			let div = document.getElementById("right");
+			div.innerHTML = "";
+			arr = TODOLISTARRAY[index]
+			arr.forEach(x => {
+				div.appendChild(createLabel(x))
+			});
+		}
 
-
-            let deleteButton = document.createElement('button');
-            deleteButton.textContent = ' Sil';
-            deleteButton.addEventListener("click", function() {
-                listItem.remove();
-            });
-            
-            listItem.appendChild(button);
-            listItem.appendChild(deleteButton);
-            
-            document.getElementById("toDoContainer").appendChild(listItem);
-        } else {
-            document.getElementById("output").textContent = "";
-        }
-    }
-</script>
-
+		function createLabel(title) {
+			let label = document.createElement("p");
+			label.textContent = title;
+			label.style.color = "blue";
+			return label;
+		}
+	</script>
 </body>
+
 </html>

@@ -15,53 +15,13 @@
     <ol class="to-dos" id="toDoContainer">
 
 
-        <div class="row">
-            <div class="col-4" id="left">
-                <button class="todo-list" array-index="1">Hobi Listesi</button>
-                <button class="todo-list" array-index="0">Alisveris Listesi</button>
-                <button class="todo-list" array-index="2">Film Listesi </button>
-            </div>
-            <div class="col-8" id="right"></div>
-        </div>
-
+      
 
 
     </ol>
-
+ 
     <script>
 
-        let div = document.getElementById("right")
-
-        let TODOLISTARRAY = [["1kg elma", "sut", "ekmek"], ["model araba yap", "resim kursuna yazil"], ["interstaller", "pulp fuction"]]
-
-        let buttons = document.getElementsByClassName("todo-list")
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].addEventListener("click", evt => {
-                console.log("veriler: ", evt)
-                let index = buttons[i].getAttribute("array-index");
-                console.log("index: ", index)
-                clearRightDivAndCreateTodoListItems(index);
-            })
-
-        }
-
-        function clearRightDivAndCreateTodoListItems(index) {
-            let div = document.getElementById("right")
-            div.innerHTML = "";
-            console.log(TODOLISTARRAY)
-            arr = TODOLISTARRAY[index]
-            arr.forEach(x => {
-                div.appendChild(createLabel(x))
-            })
-        }
-
-
-        function createLabel(title) {
-            let label = document.createElement("p");
-            label.textContent = title;
-            label.style.color = "blue";
-            return label;
-        }
 
 
         function getInput() {
@@ -134,6 +94,33 @@
                 input.value = "";
             }
         }
+
+
+
+        /*
+        	<div class="row">
+		<div class="col-4">
+		  Sütun 1
+		</div>
+		<div class="col-4">
+		  Sütun 2
+		</div>
+		<div class="col-4">
+		  Sütun 3
+		</div>
+	          </div>
+	          <div class="d-flex flex-column">
+		<div class="p-2">Sütun 1</div>
+		<div class="p-2">Sütun 2</div>
+		<div class="p-2">Sütun 3</div>
+	          </div>
+	          <div class="row">
+		<div class="col">
+		  <div class="p-2">Sütun 1</div>
+		  <div class="p-2">Sütun 2</div>
+		  <div class="p-2">Sütun 3</div>
+		</div>
+	          </div>*/
     </script>
 
 </body>

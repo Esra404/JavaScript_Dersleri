@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TO DO LİST</title>
+</head>
+<body>
+<h1>TO LIST UYGULAMASI</h1>
+<div class="row">
+
+<button id="veriAl">Yeni Liste Ekle</button>
+<ol id="to-dos">
+	
+	</div>
+</ol>
+
+<script>    
+    let BosDizi = [];
+  
+    let veriAlButton = document.getElementById("veriAl");
+    let listeOlusturButton = document.createElement("button");
+    listeOlusturButton.textContent = "Liste Oluştur";
+    
+    veriAlButton.addEventListener("click", function() {
+		
+        let veriAl = prompt("Listeye eklemek istediğiniz değeri giriniz");
+        if (veriAl) {
+            BosDizi.push(veriAl);
+            let liste = document.createElement("li");
+            liste.textContent = veriAl;
+            document.getElementById("to-dos").appendChild(liste);
+        }
+    });
+    
+    listeOlusturButton.addEventListener("click", function() {
+
+        for (let i = 0; i < BosDizi.length; i++) {
+            let veri = BosDizi[i];
+            console.log(veri);
+        }
+    });
+
+
+ 
+</script>
+</body>
+</html>

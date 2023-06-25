@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List Uygulamam</title>
-    <style>
-        .completed {
-            text-decoration: line-through;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TO DO LİST</title>
+	<style>
+		.container {
+			display: flex;
+          
+		}
+
+		.button-container {
+			flex-basis: 25%;
+		}
+
+		.button-style {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 5px;
+			background-color: #ccc;
+			border: none;
+			cursor: pointer;
+		}
+
+		.list-container {
+			flex-basis: 25%;
+		}
+        
+	</style>
+    
+      
 </head>
 <body>
-    <h1>To-Do List Uygulamam</h1>
-    <input type="text" id="taskInput">
-    <button onclick="addTask()">Ekle</button>
-    <ul id="taskList"></ul>
+	<h1>TO LIST UYGULAMASI</h1>
+	<div class="container">
+		<div class="button-container">
+			<button id="veriAl" class="button-style">Yeni Liste Ekle</button>
+		</div>
+		<div class="list-container">
+			<ol id="to-dos"></ol>
+		</div>
+	</div>
 
-    <script>
-        function addTask() {
-            let input = document.getElementById("taskInput");
-            let task = input.value;
-            
-            if (task !== "") {
-                let listItem = document.createElement("li");
-                listItem.appendChild(document.createTextNode(task));
-                
-                let deleteButton = document.createElement("button");
-                deleteButton.appendChild(document.createTextNode("Sil"));
-                deleteButton.addEventListener("click", function() {
-                    this.parentNode.remove();
-                });
-                
-                listItem.appendChild(deleteButton);
-                listItem.addEventListener("click", function() {
-                    this.classList.toggle("completed");
-                });
-                
-                let taskList = document.getElementById("taskList");
-                taskList.appendChild(listItem);
-                
-                input.value = "";
-            }
-        }
-    </script>
+	<script>
+		let BosDizi = [];
+
+		let veriAlButton = document.getElementById("veriAl");
+		veriAlButton.addEventListener("click", function() {
+			let veriAl = prompt("Listeye eklemek istediğiniz değeri giriniz");
+			if (veriAl) {
+				BosDizi.push(veriAl);
+				let liste = document.createElement("li");
+				liste.textContent = veriAl;
+				document.getElementById("to-dos").appendChild(liste);
+				guncelleListeElemanlari();
+			}
+		});
+
+		function guncelleListeElemanlari() {
+			let listeElemanlari = document.querySelectorAll("#to-dos li");
+			for (let i = listeElemanlari.length - 1; i >= 0; i--) {
+				let eleman = listeElemanlari[i];
+				let listeDugme = document.createElement("button");
+				listeDugme.textContent = eleman.textContent;
+				listeDugme.className = "button-style";
+				listeDugme.addEventListener("click", function() {
+					console.log(eleman.textContent);
+				});
+				eleman.innerHTML = "";
+				eleman.appendChild(listeDugme);
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", guncelleListeElemanlari);
+	</script>
 </body>
 </html>

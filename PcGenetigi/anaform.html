@@ -1,122 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO-DO-LİST UYGULAMASI</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TO DO LİST</title>
+	<style>
+		.container {
+			display: flex;
+		}
+
+		.button-container {
+			flex-basis: 25%;
+		}
+
+		.button-style {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 5px;
+			background-color: #ccc;
+			border: none;
+			cursor: pointer;
+		}
+
+		.list-container {
+			flex-basis: 75%;
+		}
+	</style>
 </head>
 <body>
-    <h1>TO LİST UYGULAMASI</h1>
-    <button onclick="getInput()" id="userInput">Yeni Liste Ekle</button>
-    <p id="output"></p>
-    <ol class="to-dos" id="toDoContainer">
+	<h1>TO LIST UYGULAMASI</h1>
+	<div class="container">
+		<div class="list-container">
+			<ol id="to-dos"></ol>
+		</div>
+		<div class="button-container">
+			<button id="veriAl" class="button-style">Yeni Liste Ekle</button>
+		</div>
+	</div>
 
-    </ol>
-   
-<script>
-    function getInput() {
-        let userInput = prompt("Oluşturmak istediğiniz listeyi girin:");
-        if (userInput) {
-            let listItem = document.createElement('li');
-            
-            let button = document.createElement('button');
-            button.textContent = userInput;
-            button.id="liButton";
-            button.addEventListener("click",function(){
-                let input=document.createElement("input");
-                input.setAttribute('id','taskInput');
-              //  input.textContent='bu bir input elemnrtidir.';
-                document.body.appendChild(li);//input olacak
+	<script>
+		let BosDizi = [];
 
+		let veriAlButton = document.getElementById("veriAl");
+		veriAlButton.addEventListener("click", function() {
+			let veriAl = prompt("Listeye eklemek istediğiniz değeri giriniz");
+			if (veriAl) {
+				BosDizi.push(veriAl);
+				let liste = document.createElement("li");
+				liste.textContent = veriAl;
+				document.getElementById("to-dos").appendChild(liste);
+				guncelleListeElemanlari();
+			}
+		});
 
-                let button2=document.createElement("buton2");//button olacak  create elemnt neden button iki??
-                //button2.addEventListener("click",addTask);
-                //document.body.appendChild(button2);   ana yere eklemeyi unutmuşum 
-                let ulYapisi=document.createElement("ul");
-                ulYapisi.setAttribute('id','taskList');
-                document.body.appendChild(ulYapisi);
-            });
-            let deleteButton = document.createElement('button');
-            deleteButton.textContent = ' Sil';
-            deleteButton.addEventListener("click", function() {
-                listItem.remove();
-            });
-                 
-            listItem.appendChild(button);
-            listItem.appendChild(deleteButton);
-            document.getElementById("toDoContainer").appendChild(listItem);
+		function guncelleListeElemanlari() {
+			let listeElemanlari = document.querySelectorAll("#to-dos li");
+			for (let i = listeElemanlari.length - 1; i >= 0; i--) {
+				let eleman = listeElemanlari[i];
+				let listeDugme = document.createElement("button");
+				listeDugme.textContent = eleman.textContent;
+				listeDugme.className = "button-style";
+				listeDugme.addEventListener("click", function() {
+					console.log(eleman.textContent);
+				});
+				eleman.innerHTML = "";
+				eleman.appendChild(listeDugme);
+			}
+		}
 
-        } else {
-            document.getElementById("output").textContent = "";
-        }
-    }
-        
-            function addTask() {
-            let input = document.getElementById("taskInput");
-            let task = input.value;
-            
-            if (task !== "") {
-                let listItem = document.createElement("li");
-                listItem.appendChild(document.createTextNode(task));
-
-                
-                let deleteButton = document.createElement("button");
-                deleteButton.appendChild(document.createTextNode("Sil"));
-                deleteButton.addEventListener("click", function() {
-                    this.parentNode.remove();
-                });
-                
-                listItem.appendChild(deleteButton);
-                listItem.addEventListener("click", function() {
-                    this.classList.toggle("completed");
-                });
-                
-                let taskList = document.getElementById("taskList");
-                taskList.appendChild(listItem);
-                
-                input.value = "";
-            }
-        }
-    
-      
-          
-       
-            
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-       <h1>To-Do List Uygulamam</h1>
-    <input type="text" id="taskInput">
-    <button onclick="addTask()">Ekle</button>
-    <ul id="taskList"></ul>
-
-   button.addEventListener("click", function() {
-                console.log("Tıklanan öğe: " + userInput);
-            });
-            let buttonn =document.getElementById("liButton");
-            buttonn.addEventListener("click",function () {
-                let div=document.createElement("div");
-                let parag =document.createElement("p");
-                div.appendChild(parag);
-                document.body.appendChild(div);
-                
-            });
-  */    
-</script>
-
+		document.addEventListener("DOMContentLoaded", guncelleListeElemanlari);
+	</script>
 </body>
 </html>
