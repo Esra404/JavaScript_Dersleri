@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LAMBA Aç/Kapa</title>
+	<style>
+		a {
+			background-color: green;
+			color: aliceblue;
+			text-decoration: none;
+			font-family: Georgia, 'Times New Roman', Times, serif;
+			font-size: 20px;
+			padding: 10px 40px;
+			margin: 30px;
+			text-align: center;
+		}
+	</style>
+	<script>
+		function lambayiAc() {
+			document.getElementById('lamba').setAttribute('src', 'lamba_acik.jpg');
+		}
+		
+		function lambayiKapat() {
+			document.getElementById('lamba').setAttribute('src', 'lamba_kapali.jpg');
+		}
+	</script>
+</head>
+<body>
+	<br><br>
+	<a href="#" onclick="lambayiAc()">Aç</a>
+	<a href="#" onclick="lambayiKapat()">Kapat</a>
+	<br><br>
+	<img id="lamba" src="lamba_kapali.jpg">
+</body>
+</html>
