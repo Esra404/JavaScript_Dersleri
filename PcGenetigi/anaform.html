@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dinamik Kod Örneği</title>
+  <script>
+    // Kullanıcıdan bir sayı alın
+    var sayi = parseInt(prompt("Bir sayı girin:"));
+
+    // Sayının karesini hesaplayan bir fonksiyon tanımlayın
+    function kareHesapla(sayi) {
+      return sayi * sayi;
+    }
+
+    // Sonucu ekrana yazdıran fonksiyon
+    function sonucuGoster() {
+      var sonuc = kareHesapla(sayi);
+      document.getElementById("sonuc").textContent = "Girdiğiniz sayının karesi: " + sonuc;
+    }
+  </script>
+</head>
+<body>
+  <h1>Dinamik Kod Örneği</h1>
+
+  <button onclick="sonucuGoster()">Sonucu Göster</button>
+  <p id="sonuc"></p>
+</body>
+</html>
