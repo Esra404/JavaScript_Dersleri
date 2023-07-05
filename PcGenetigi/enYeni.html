@@ -3,28 +3,115 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TO DO LİST</title>
+	<title>TO LIST APP</title>
 </head>
 <body>
-<h1>TO LIST UYGULAMASI</h1>
-<button id="veriAl">Yeni Liste Ekle</button>
-<ol id="to-dos">
+	<style>
+		.container {
+			display: flex;
+          
+		}
 
-</ol>
-<script>    
-        let BosDizi=[];
-	let veriAl=prompt("ouşturmak istediğiniz listeyi giirniz");
-	if(veriAl){
-		let liste =document.createElement("li");
-		let button
+		.button-container {
+			flex-basis: 25%;
+		}
+
+		.button-style {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 5px;
+			background-color: #ccc;
+			border: none;
+			cursor: pointer;
+		}
+
+		.list-container {
+			text-align: center;
+			flex-basis: 25%;
+		}
+        
+	</style>
+
+	<h1>to do list</h1>
+	<div class="row">
+		<div class="container">
+			<div class="button-container">
+				<button id="veriAl" class="button-style">Yeni Liste Ekle</button>
+			</div>
+		<div class="container" id="left">
+			<button class="button-container" array-index="0">Hobi Listesi</button>
+			<button class="button-container" array-index="1">Alışveriş Listesi</button>
+			<button class="button-container" array-index="2">Film Listesi</button>
+		</div>
+		<div class="col-8" id="right"></div>
+	</div>
+	<div class="list-container" id="listeOlustur">
+		<ol id="to-dos"></ol>
+	</div>
+</div>
+<script>
+	let BosDizi = [];
+
+let veriAlButton = document.getElementById("veriAl");
+veriAlButton.addEventListener("click", function() {
+	let veriAl = prompt("Listeye eklemek istediğiniz değeri giriniz");
+	if (veriAl) {
+		BosDizi.push(veriAl);
+		let liste = document.createElement("li");
+		liste.textContent = veriAl;
+		document.getElementById("to-dos").appendChild(liste);
+		guncelleListeElemanlari();
 	}
-	for(let i=0;i<BosDizi.length;i++){
-		veriAl=dizi[i];
-		console.log(veriAl);
+});
+
+function guncelleListeElemanlari() {
+	let listeElemanlari = document.querySelectorAll("#to-dos li");
+	for (let i = listeElemanlari.length - 1; i >= 0; i--) {
+		let eleman = listeElemanlari[i];
+		let listeDugme = document.createElement("button");
+		listeDugme.textContent = eleman.textContent;
+		listeDugme.className = "button-style";
+		listeDugme.addEventListener("click", function() {
+			console.log(eleman.textContent);
+		});
+		eleman.innerHTML = "";
+		eleman.appendChild(listeDugme);
 	}
-</script>
+}
 
 
+
+
+document.addEventListener("DOMContentLoaded", guncelleListeElemanlari);
+
+
+
+	let div = document.getElementById("right");
+	let TODOLISTARRAY = [["1 kg elma", "2kg armut", "süt"], ["model araba yap", "resim kursuna yazıl"], ["installer", "django"]];
+	let buttons = document.getElementsByClassName("button-container");
+	for (let i = 0; i < buttons.length; i++) {
+		buttons[i].addEventListener("click", evt => {
+			let index = buttons[i].getAttribute("array-index");
+			clearRightDivAndCreateTodoListItems(index);
+		})
+	}
+
+	function clearRightDivAndCreateTodoListItems(index) {
+		let div = document.getElementById("right");
+		div.innerHTML = "";
+		arr = TODOLISTARRAY[index]
+		arr.forEach(x => {
+			div.appendChild(createLabel(x))
+		});
+	}
+
+	function createLabel(title) {
+		let label = document.createElement("p");
+		label.textContent = title;
+		label.style.color = "blue";
+		return label;
+	}
 	
+</script>
 </body>
 </html>
