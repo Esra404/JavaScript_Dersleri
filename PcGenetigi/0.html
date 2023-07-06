@@ -27,6 +27,7 @@
 		.list-container {
 			text-align: center;
 			flex-basis: 25%;
+			margin-right: 20px;
 		}
         
 	</style>
@@ -43,9 +44,7 @@
 				<button class="button-style" array-index="2">Film Listesi</button>
 			</div>
 		</div>
-		<div class="list-container" id="listeOlustur">
-			<ol id="to-dos"></ol>
-		</div>
+		<div id="right"></div>
 	</div>
 	<script>
 		let BosDizi = [];
@@ -84,26 +83,28 @@
 		let buttons = document.getElementsByClassName("button-style");
 		for (let i = 0; i < buttons.length; i++) {
 			buttons[i].addEventListener("click", evt => {
-```html
 				let index = buttons[i].getAttribute("array-index");
-				clearRightDivAndCreateTodoListItems(index);
+				clearRightDivAndCreateTodoListItems(index, TODOLISTARRAY
+				[index]);
 			})
 		}
 
-		function clearRightDivAndCreateTodoListItems(index) {
-			let div = document.getElementById("right");
-			div.innerHTML = "";
-			let arr = TODOLISTARRAY[index];
-			arr.forEach(x => {
-				div.appendChild(createLabel(x));
+		function clearRightDivAndCreateTodoListItems(index, items) {
+			let listContainer = document.createElement("div");
+			listContainer.className = "container";
+			let ol = document.createElement("ol");
+			ol.className = "to-dos";
+			items.forEach(x => {
+				ol.appendChild(createListItem(x));
 			});
+			listContainer.appendChild(ol);
+			div.appendChild(listContainer);
 		}
 
-		function createLabel(title) {
-			let label = document.createElement("p");
-			label.textContent = title;
-			label.style.color = "blue";
-			return label;
+		function createListItem(title) {
+			let li = document.createElement("li");
+			li.textContent = title;
+			return li;
 		}
 		
 	</script>

@@ -65,6 +65,9 @@ veriAlButton.addEventListener("click", function() {
 });
 
 function guncelleListeElemanlari() {
+
+
+
 	let listeElemanlari = document.querySelectorAll("#to-dos li");
 	for (let i = listeElemanlari.length - 1; i >= 0; i--) {
 		let eleman = listeElemanlari[i];
@@ -83,8 +86,6 @@ function guncelleListeElemanlari() {
 
 
 document.addEventListener("DOMContentLoaded", guncelleListeElemanlari);
-
-
 
 	let div = document.getElementById("right");
 	let TODOLISTARRAY = [["1 kg elma", "2kg armut", "süt"], ["model araba yap", "resim kursuna yazıl"], ["installer", "django"]];
