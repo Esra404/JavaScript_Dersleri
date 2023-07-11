@@ -31,24 +31,23 @@
         document.querySelector("#yeni_liste_btn").addEventListener('click', () => {
             const yeniEleman = prompt("Yeni Liste Girin: ");
 
-            // Kontrol etmek için elemanın daha önce eklenip eklenmediğini kontrol edin
+        
             if (!liste.includes(yeniEleman)) {
                 liste.push(yeniEleman);
 
-                // Yalnızca yeni eklenen elemanı yazdırın
                 const li = document.createElement("li");
                 li.innerHTML = "<input type='checkbox'><button class='item_button'>" + yeniEleman + "</button>";
                 ul.appendChild(li);
 
-                // İkinciller için aynı işlemi uygulayabilirsiniz
+       
                 const all_ikincil_buttonlar = document.querySelectorAll(".item_button");
 
                 for (let j = 0; j < all_ikincil_buttonlar.length; j++) {
                     all_ikincil_buttonlar[j].addEventListener('click', () => {
                         const ikincilEleman = prompt("Liste Elemanını Ekleyin");
 
-                        // Kontrol etmek için ikincil elemanın daha önce eklenip eklenmediğini kontrol edin
-                        if (!ikincil_liste.includes(ikincilEleman)) {
+                  
+                        if (!ikincil_liste.includes(ikincilEleman)) { // inclu
                             ikincil_liste.push(ikincilEleman);
                             const ikincil_li = document.createElement("li");
                             ikincil_li.innerHTML = ikincilEleman;

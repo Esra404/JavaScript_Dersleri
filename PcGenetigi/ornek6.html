@@ -6,24 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <h1>To Do List</h1>
     <button id="yeni_liste_btn" type="button">Yeni Liste Ekle</button>
     <div id="yeni_liste">
@@ -67,6 +49,7 @@
                 for(let i = 0; i < ikincil_liste.length; i++){
                 ikincil_list_item = ikincil_liste[i];
                 ikincil_li = document.createElement("li");
+	    clearTOdolist(ikincil_li)
 
             }
 
@@ -77,28 +60,27 @@
             }
 
         });
+        function clearTOdolist(ikincil_li){
+	let div =document.getElementById(".item_button");
+	div.innerHTML="";
+	arr=liste[index];
+	arr.forEach(x => {
+		div.appendChild(createLabel(x))
+			});
+		}
 
-        function clearRight(index){
-            let div=document.getElementById("")
-        }
-    
+		function createLabel(title) {
+			let label = document.createElement("p");
+			label.textContent = title;
+			label.style.color = "blue";
+			return label;
+		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
+	
 
 
+        
 
 
     </script>
