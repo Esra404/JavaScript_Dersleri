@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <button id="yeni_liste_btn" type="button">Yeni Liste Ekle</button>
+    <div id="yeni_liste">
+        <ul id="liste_item">
+
+        </ul>
+    </div>
+    <div id="ikincil_liste">
+        <ul id="ikincil_yeni_liste"></ul>
+    </div>
+    <script>
+        let liste = [];
+        let ul = document.querySelector("#liste_item");
+        let li = "";
+        let list_item = "";
+
+        let ikincil_liste = [];
+        let ikincil_ul = document.querySelector("#ikincil_yeni_liste");
+        let ikincil_li = "";
+        let ikincil_list_item="";
+        let all_ikincil_buttonlar = [];
+
+        document.querySelector("#yeni_liste_btn").addEventListener('click', ()=>{
+            liste.push(prompt("Yeni Liste Girin: "));
+            for(let i = 0; i < liste.length; i++){
+            list_item = liste[i];
+            li = document.createElement("li");
+            }
+
+            li.innerHTML = "<input type='checkbox'><button class='item_button'>" + list_item + "</input></button>";
+            ul.appendChild(li);
+
+             //İkinciller
+
+             all_ikincil_buttonlar = document.querySelectorAll(".item_button");
+
+            for(let j = 0; j < all_ikincil_buttonlar.length; j++){
+                all_ikincil_buttonlar[j].addEventListener('click', () =>{
+
+                ikincil_liste.push(prompt("Liste Elemenanı Ekleyim"));
+                for(let i = 0; i < ikincil_liste.length; i++){
+                ikincil_list_item = ikincil_liste[i];
+                ikincil_li = document.createElement("li");
+
+            }
+
+            ikincil_li.innerHTML = ikincil_list_item;
+            ikincil_ul.appendChild(ikincil_li);
+
+            });
+            }
+
+        });
+
+
+
+    </script>
+</body>
+</html>

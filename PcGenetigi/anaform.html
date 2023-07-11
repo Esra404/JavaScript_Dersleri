@@ -1,27 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dinamik Kod Örneği</title>
-  <script>
-    // Kullanıcıdan bir sayı alın
-    var sayi = parseInt(prompt("Bir sayı girin:"));
-
-    // Sayının karesini hesaplayan bir fonksiyon tanımlayın
-    function kareHesapla(sayi) {
-      return sayi * sayi;
-    }
-
-    // Sonucu ekrana yazdıran fonksiyon
-    function sonucuGoster() {
-      var sonuc = kareHesapla(sayi);
-      document.getElementById("sonuc").textContent = "Girdiğiniz sayının karesi: " + sonuc;
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <h1>Dinamik Kod Örneği</h1>
+    <h1>To Do List</h1>
+    <button id="yeni_liste_btn" type="button">Yeni Liste Ekle</button>
+    <div id="yeni_liste">
+        <ul id="liste_item">
 
-  <button onclick="sonucuGoster()">Sonucu Göster</button>
-  <p id="sonuc"></p>
+        </ul>
+    </div>
+    <div id="ikincil_liste">
+        <ul id="ikincil_yeni_liste"></ul>
+    </div>
+    <script>
+        let liste = [];
+        let ul = document.querySelector("#liste_item");
+        let li = "";
+        let list_item = "";
+
+        let ikincil_liste = [];
+        let ikincil_ul = document.querySelector("#ikincil_yeni_liste");
+        let ikincil_li = "";
+        let ikincil_list_item = "";
+        let all_ikincil_buttonlar = [];
+
+        document.querySelector("#yeni_liste_btn").addEventListener('click', () => {
+            const yeniEleman = prompt("Yeni Liste Girin: ");
+
+            // Kontrol etmek için elemanın daha önce eklenip eklenmediğini kontrol edin
+            if (!liste.includes(yeniEleman)) {
+                liste.push(yeniEleman);
+
+                // Yalnızca yeni eklenen elemanı yazdırın
+                const li = document.createElement("li");
+                li.innerHTML = "<input type='checkbox'><button class='item_button'>" + yeniEleman + "</button>";
+                ul.appendChild(li);
+
+                // İkinciller için aynı işlemi uygulayabilirsiniz
+                const all_ikincil_buttonlar = document.querySelectorAll(".item_button");
+
+                for (let j = 0; j < all_ikincil_buttonlar.length; j++) {
+                    all_ikincil_buttonlar[j].addEventListener('click', () => {
+                        const ikincilEleman = prompt("Liste Elemanını Ekleyin");
+
+                        // Kontrol etmek için ikincil elemanın daha önce eklenip eklenmediğini kontrol edin
+                        if (!ikincil_liste.includes(ikincilEleman)) {
+                            ikincil_liste.push(ikincilEleman);
+                            const ikincil_li = document.createElement("li");
+                            ikincil_li.innerHTML = ikincilEleman;
+                            ikincil_ul.appendChild(ikincil_li);
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
