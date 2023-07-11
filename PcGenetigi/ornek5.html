@@ -52,9 +52,10 @@
 
             for(let j = 0; j < all_ikincil_buttonlar.length; j++){
                 all_ikincil_buttonlar[j].addEventListener('click', () =>{
-
+                        
                 ikincil_liste.push(prompt("Liste Elemenanı Ekleyim"));
                 for(let i = 0; i < ikincil_liste.length; i++){
+                
                 ikincil_list_item = ikincil_liste[i];
                 ikincil_li = document.createElement("li");
              
@@ -67,10 +68,15 @@
             ikincil_ul.appendChild(ikincil_li);
 
             });
-            }
         
-
+            };
+        
+        
         });
+
+
+
+
 
 
 
