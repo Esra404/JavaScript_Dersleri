@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+<title>js</title>
+<div class="container">
+	<h1>To Do List</h1>
+	<input type="text" id="inputText">
+	 <input type="sumbit" id="addToDo" value="Add">
+	 <input type="sumbit" id="clearToDo" value="Clear">
+	 
+
+</div>
+<div class="to-dos" id="toDoContainer"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+
+let addToDoButton=document.getElementById('addToDo');
+let toDoContainer=document.getElementById('toDoContainer');
+
+
+
+addToDoButton.addEventListener('click',function(){
+	let paragraph =document.createElementNS('p');
+	paragraph.classList.add('paragraph-styling');
+	toDoContainer.appendChild(paragraph);
+	paragraph.innerHTML=inputText.value;
+	inputText.value='';
+
+paragraph.addEventListener('click',function(){
+	paragraph.style.textDecoration='line-through';
+})
+paragraph.addEventListener('dbclick',function(){
+	toDoContainer.removeChild(paragraph);
+});
+
+clearToDo.addEventListener('click',function(){
+	paragraph.remove();
+})
+	
+})
+
+
+	</script>
+
+
+
+</body>
+</html>
