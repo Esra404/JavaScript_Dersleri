@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List Uygulaması </title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .todo-column {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .todo-list,
+    .sub-todo-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    .sub-todo {
+      padding-left: 20px;
+      font-size: 20px;
+    }
+
+    .checklist-toggle {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .add-icon {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .delete-icon {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .todo-details {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todo List Uygulaması </h1>
+  <div class="container">
+    <div class="todo-column">
+      <h2>Todo</h2>
+      <button id="yeni_gorev_btn" type="button">Yeni Görev Ekle</button>
+      <ul id="gorev_listesi" class="todo-list"></ul>
+    </div>
+    <div class="todo-column">
+      <h2 >Sub Todo</h2>
+      <div id="gorev_detaylari" class="todo-details"></div>
+    </div>
+  </div>
+
+  <script>
+    let gorevler = [];
+
+    function renderTodoList() {
+      let gorevListesi = document.querySelector("#gorev_listesi");
+      gorevListesi.innerHTML = "";
+
+      gorevler.forEach((todo, index) => {// burdaki foreach gorevler dızısındeki her öğe için döngü olusturdu
+        let yeniLi = document.createElement("li");//to do her döngüde gorevler dızızsındekı o ankı nesnemı temsıl edecek,index te her adımda o anki konumu verecek 
+        // alt göreve geçmek için js arto simgemi oluşturu
+        // Aşagıdaki onclıck yapıları dugme olusturur
+        //addSubTodoItem()  fonksiyonum tılanınca çalışır ve ve o anki göreve ait olan alt görevimi ekleyecek 
+        //deleteTodoItem() fonksiyonum silmek için kullandım ikona her tıkladığımda bir at ögemi siler 
+        yeniLi.innerHTML = `  
+          <button onclick="showTodoDetails(${index})">${todo.baslik}</button>
+          <span class="add-icon" onclick="addSubTodoItem(${index})">&#43;</span> 
+          <span class="delete-icon" onclick="deleteTodoItem(${index})">&#8722;</span>
+          <ul class="sub-todo-list" style="display: none;"></ul>
+        `;
+        gorevListesi.appendChild(yeniLi);// ´´ yapaısısnı html ogelerini dinamik tutmak için kullanıyorum
+      });
+    }
+
+    function renderSubTodoList(index) { // seçilen görevlerin alt görevlerini görüntülmek için bu fonksiyonu kullanıyorum
+      let gorevDetaylari = document.querySelector("#gorev_detaylari");
+      gorevDetaylari.innerHTML = "";
+      let todo = gorevler[index];
+      let subTodoList = todo.subTodoList;
+
+      let detayHTML = `
+        <ul class="sub-todo-list">
+          ${subTodoList.map((subTodo, subIndex) => `
+            <li class="sub-todo">
+              <input type="checkbox" class="checklist-toggle" onchange="toggleChecklist(${index}, true)">
+              ${subTodo.baslik}
+              <span class="delete-icon" onclick="deleteSubTodoItem(${index}, ${subIndex})">&#8722;</span>
+            </li>
+          `).join("")}
+        </ul>
+      `;
+      //map metodu ile her alt görev için bir dögü oluşmasını sağlar
+      //onchange olayı tetiklendiğnde tooglechecklist fonksiyonunu çağırır 
+      // joinle oluşturulan li ogeleri boş dizi içine atılır
+      gorevDetaylari.innerHTML = detayHTML;
+    }
+
+    function toggleChecklist(index, isTodo) {
+      if (isTodo) {
+        gorevler[index].tamamlandi = !gorevler[index].tamamlandi;
+      } else {
+        gorevler[index].subTodoList[index].tamamlandi = !gorevler[index].subTodoList[index].tamamlandi;
+      }
+    }
+
+    function addSubTodoItem(index) {
+      let yeniSubTodo = prompt("Yeni subTodo başlığını girin: ");
+      if (yeniSubTodo) {
+        gorevler[index].subTodoList.push({ baslik: yeniSubTodo, tamamlandi: false });
+        renderSubTodoList(index);
+      }
+    }
+
+    function deleteTodoItem(index) {
+      gorevler.splice(index, 1);
+      renderTodoList();
+      let gorevDetaylari = document.querySelector("#gorev_detaylari");
+      gorevDetaylari.innerHTML = "";
+    }
+
+    function deleteSubTodoItem(todoIndex, subTodoIndex) {
+      gorevler[todoIndex].subTodoList.splice(subTodoIndex, 1);
+      renderSubTodoList(todoIndex);
+    }
+
+    function toggleSubTodoVisibility(index) {
+      let gorevListesi = document.querySelector("#gorev_listesi");
+      let todoLi = gorevListesi.children[index];
+      let subTodoUl = todoLi.querySelector("ul");
+
+      if (subTodoUl.style.display === "none") {
+        subTodoUl.style.display = "block";
+      } else {
+        subTodoUl.style.display = "none";
+      }
+    }
+
+    function showTodoDetails(index) {
+      renderSubTodoList(index);
+    }
+
+    document.querySelector("#yeni_gorev_btn").addEventListener('click', () => {
+      let yeniGorev = prompt("Yeni görevi girin: ");
+      if (yeniGorev) {
+        gorevler.push({ baslik: yeniGorev, tamamlandi: false, subTodoList: [] });  //gorev: yeniGorev ifadesi nesnenin gorev özelliğine yeniGorev değişkeninin değerini atar/subTodoList dizisine yazdırrırız
+                                                                // yeni görevin adını veya tanımını temsil eder.
+        
+        renderTodoList();
+      }
+    });
+  </script>
+</body>
+</html>

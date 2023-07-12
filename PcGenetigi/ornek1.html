@@ -1,118 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TO LIST APP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <style>
+    li {
+      padding: 5px 0;
+    }
+
+    .sub-todo {
+      padding-left: 20px;
+    }
+  </style>
 </head>
 <body>
-	<style>
-		.container {
-			display: flex;
-          
-		}
+  <h1>Todo List</h1>
+  <button id="yeni_gorev_btn" type="button">Yeni Görev Ekle</button>
+  <ul id="gorev_listesi"></ul>
 
-		.button-container {
-			flex-basis: 25%;
-		}
+  <script>
+    let gorevler = JSON.parse(localStorage.getItem("gorevler")) || [];
 
-		.button-style {
-			width: 100%;
-			padding: 10px;
-			margin-bottom: 5px;
-			background-color: #ccc;
-			border: none;
-			cursor: pointer;
-		}
+    function ekleGorev() {
+      let yeniGorev = prompt("Yeni görevi girin: ");
 
-		.list-container {
-			text-align: center;
-			flex-basis: 25%;
-		}
-        
-	</style>
+      if (yeniGorev) {
+        gorevler.push({ gorev: yeniGorev, subTodoList: [] });
+        localStorage.setItem("gorevler", JSON.stringify(gorevler));
+        olusturGorevElementi(yeniGorev);
+      }
+    }
 
-	<h1>to do list</h1>
-	<div class="row">
-		<div class="container">
-			<div class="button-container">
-				<button id="veriAl" class="button-style">Yeni Liste Ekle</button>
-			</div>
-		<div class="container" id="left">
-			<button class="button-container" array-index="0">Hobi Listesi</button>
-			<button class="button-container" array-index="1">Alışveriş Listesi</button>
-			<button class="button-container" array-index="2">Film Listesi</button>
-		</div>
-		<div class="col-8" id="right"></div>
-	</div>
-	<div class="list-container" id="listeOlustur">
-		<ol id="to-dos"></ol>
-	</div>
-</div>
-<script>
-	let BosDizi = [];
+    function olusturGorevElementi(gorev) {
+      let gorevListesi = document.querySelector("#gorev_listesi");
+      let yeniLi = document.createElement("li");
+      let yeniButton = document.createElement("button");
+      yeniButton.innerHTML = gorev;
+      yeniButton.addEventListener('click', () => {
+        let subTodo = prompt("Yeni subTodo başlığını girin: ");
+        if (subTodo) {
+          let gorevIndex = gorevler.findIndex(g => g.gorev === gorev);
+          gorevler[gorevIndex].subTodoList.push(subTodo);
+          localStorage.setItem("gorevler", JSON.stringify(gorevler));
+          let yeniSubTodo = document.createElement("li");
+          yeniSubTodo.className = "sub-todo";
+          yeniSubTodo.innerHTML = subTodo;
+          yeniLi.appendChild(yeniSubTodo);
+        }
+      });
+      yeniLi.appendChild(yeniButton);
+      gorevListesi.appendChild(yeniLi);
+    }
 
-let veriAlButton = document.getElementById("veriAl");
-veriAlButton.addEventListener("click", function() {
-	let veriAl = prompt("Listeye eklemek istediğiniz değeri giriniz");
-	if (veriAl) {
-		BosDizi.push(veriAl);
-		let liste = document.createElement("li");
-		liste.textContent = veriAl;
-		document.getElementById("to-dos").appendChild(liste);
-		guncelleListeElemanlari();
-	}
-});
+    document.querySelector("#yeni_gorev_btn").addEventListener('click', ekleGorev);
 
-function guncelleListeElemanlari() {
-
-
-
-	let listeElemanlari = document.querySelectorAll("#to-dos li");
-	for (let i = listeElemanlari.length - 1; i >= 0; i--) {
-		let eleman = listeElemanlari[i];
-		let listeDugme = document.createElement("button");
-		listeDugme.textContent = eleman.textContent;
-		listeDugme.className = "button-style";
-		listeDugme.addEventListener("click", function() {
-			console.log(eleman.textContent);
-		});
-		eleman.innerHTML = "";
-		eleman.appendChild(listeDugme);
-	}
-}
-
-
-
-
-document.addEventListener("DOMContentLoaded", guncelleListeElemanlari);
-
-	let div = document.getElementById("right");
-	let TODOLISTARRAY = [["1 kg elma", "2kg armut", "süt"], ["model araba yap", "resim kursuna yazıl"], ["installer", "django"]];
-	let buttons = document.getElementsByClassName("button-container");
-	for (let i = 0; i < buttons.length; i++) {
-		buttons[i].addEventListener("click", evt => {
-			let index = buttons[i].getAttribute("array-index");
-			clearRightDivAndCreateTodoListItems(index);
-		})
-	}
-
-	function clearRightDivAndCreateTodoListItems(index) {
-		let div = document.getElementById("right");
-		div.innerHTML = "";
-		arr = TODOLISTARRAY[index]
-		arr.forEach(x => {
-			div.appendChild(createLabel(x))
-		});
-	}
-
-	function createLabel(title) {
-		let label = document.createElement("p");
-		label.textContent = title;
-		label.style.color = "blue";
-		return label;
-	}
-	
-</script>
+    // Sayfa yüklendiğinde kaydedilmiş görevleri geri yükleme
+    window.addEventListener('load', () => {
+      let kaydedilmisGorevler = JSON.parse(localStorage.getItem("gorevler")) || [];
+      if (kaydedilmisGorevler.length > 0) {
+        gorevler = kaydedilmisGorevler;
+        kaydedilmisGorevler.forEach(gorev => {
+          olusturGorevElementi(gorev.gorev);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

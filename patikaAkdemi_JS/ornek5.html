@@ -6,9 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
-
     <h1>To Do List</h1>
     <button id="yeni_liste_btn" type="button">Yeni Liste Ekle</button>
     <div id="yeni_liste">
@@ -25,10 +22,6 @@
         let li = "";
         let list_item = "";
 
-
-
-        
-
         let ikincil_liste = [];
         let ikincil_ul = document.querySelector("#ikincil_yeni_liste");
         let ikincil_li = "";
@@ -40,7 +33,6 @@
             for(let i = 0; i < liste.length; i++){
             list_item = liste[i];
             li = document.createElement("li");
-            
             }
 
             li.innerHTML = "<input type='checkbox'><button class='item_button'>" + list_item + "</input></button>";
@@ -52,30 +44,27 @@
 
             for(let j = 0; j < all_ikincil_buttonlar.length; j++){
                 all_ikincil_buttonlar[j].addEventListener('click', () =>{
-                        
+
                 ikincil_liste.push(prompt("Liste Elemenanı Ekleyim"));
                 for(let i = 0; i < ikincil_liste.length; i++){
-                
                 ikincil_list_item = ikincil_liste[i];
                 ikincil_li = document.createElement("li");
-             
 
             }
-            
-            
 
             ikincil_li.innerHTML = ikincil_list_item;
             ikincil_ul.appendChild(ikincil_li);
 
             });
-        
-            };
-        
-        
+            }
+
         });
 
 
 
+    </script>
+</body>
+</html>
 
 
 

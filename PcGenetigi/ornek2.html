@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <style>
+    li {
+      padding: 5px 0;
+    }
+
+    .sub-todo {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <button id="yeni_gorev_btn" type="button">Yeni Görev Ekle</button>
+  <ul id="gorev_listesi"></ul>
+
+  <script>
+    let gorevler = [];
+
+    document.querySelector("#yeni_gorev_btn").addEventListener('click', () => {
+
+      let yeniGorev = prompt("Yeni görevi girin: ");
+
+      if (yeniGorev) {
+
+        gorevler.push({ gorev: yeniGorev, subTodoList: [] });   //gorev: yeniGorev ifadesi nesnenin gorev özelliğine yeniGorev değişkeninin değerini atar/ yeniGorev
+                                                                // yeni görevin adını veya tanımını temsil eder.
+
+        
+        let gorevListesi = document.querySelector("#gorev_listesi");
+        let yeniLi = document.createElement("li");
+        let yeniButton = document.createElement("button");
+        yeniButton.innerHTML = yeniGorev;
+        yeniButton.addEventListener('click', () => {
+          let subTodo = prompt("Yeni subTodo başlığını girin: ");
+          if (subTodo) {
+            let gorevIndex = gorevler.findIndex(gorev => gorev.gorev === yeniGorev);
+            gorevler[gorevIndex].subTodoList.push(subTodo);
+            let yeniSubTodo = document.createElement("li");
+            yeniSubTodo.className = "sub-todo";
+            yeniSubTodo.innerHTML = subTodo;
+            yeniLi.appendChild(yeniSubTodo);
+          }
+        });
+        yeniLi.appendChild(yeniButton);
+        gorevListesi.appendChild(yeniLi);
+      }
+    });
+  </script>
+</body>
+</html>
