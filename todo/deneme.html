@@ -88,7 +88,7 @@
       <ul id="gorev_listesi" class="todo-list"></ul>
     </div>
     <div class="todo-column">
-      <h2>Sub Todo</h2>
+      <h2>Listelerim</h2>
       <div id="gorev_detaylari" class="todo-details"></div>
     </div>
   </div>
@@ -104,7 +104,7 @@
         let yeniLi = document.createElement("li");
         yeniLi.innerHTML = `
           <button onclick="showTodoDetails(${index})" class="${todo.tamamlandi ? 'completed' : ''}">${todo.baslik}</button>
-          <button class="add-icon" onclick="addSubTodoItem(${index})">Ekle</button>
+          <button class="add-icon" onclick="addSubTodoItem(${index})">Düzenle</button>
           <button class="delete-icon" onclick="deleteTodoItem(${index})">Sil</button>
           <ul class="sub-todo-list" style="display: none;"></ul>
         `;

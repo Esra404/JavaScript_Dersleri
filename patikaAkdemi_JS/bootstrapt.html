@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css"/>
+</head>
+<body>
+
+  <div class="container text-center">
+    <div class="row align-items-start">
+      <div class="col">
+        <div class="row container border">
+          <button id="liste_ekle_btn" class="btn btn-dark btn-block">Liste Ekle</button>
+          <div class="col-md-1">
+            <h1>Listeler</h1>
+          </div>
+          <div class="container">
+            <ol id="liste_item" class="list-group list-group-numbered">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row align-items-start">
+          <span class="text-start fw-bold">Liste Elemanları</span>
+        </div>
+        <div class="d-flex flex-row bd-highlight mb-3">
+          <input id="eleman_ekle_input" type="text" placeholder="Eleman Ekleyin"/>
+          <button id="eleman_ekle_btn" class="btn btn-primary">Eleman Ekle</button>
+        </div>
+        <div id="eleman_listesi" class="row align-items-start">
+          <div class="list-group row align-items-start">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Liste Öğeleri
+    let liste = [];
+    let listeUl = document.querySelector("#liste_item");
+
+    // Eleman Öğeleri
+    let elemanListesi = [];
+    let elemanListesiDiv = document.querySelector("#eleman_listesi");
+
+    // Liste Ekle
+    document.querySelector("#liste_ekle_btn").addEventListener("click", () => {
+      let yeniListeAdi = prompt("Yeni Liste Adını Girin:");
+      if (yeniListeAdi) {
+        let yeniListe = {
+          ad: yeniListeAdi,
+          elemanlar: []
+        };
+        liste.push(yeniListe);
+        renderListe();
+      }
+    });
+
+    // Eleman Ekle
+    document.querySelector("#eleman_ekle_btn").addEventListener("click", () => {
+      let elemanAdi = document.querySelector("#eleman_ekle_input").value;
+      if (elemanAdi) {
+        let seciliListe = liste[0]; // Örnek olarak ilk listeyi seçtik
+        seciliListe.elemanlar.push(elemanAdi);
+        renderElemanlar(seciliListe);
+      }
+    });
+
+    // Liste Öğelerini Render Et
+    function renderListe() {
+      listeUl.innerHTML = "";
+      for (let i = 0; i < liste.length; i++) {
+        let listeItem = liste[i];
+        let li = document.createElement("li");
+        li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-start");
+        li.innerHTML = `
+          <div class="ms-2 me-auto">${listeItem.ad}</div>
+          <button class="btn btn-danger" onclick="silListe(${i})">Sil</button>
+          <button class="btn btn-warning" onclick="duzenleListe(${i})">Düzenle</button>
+        `;
+        listeUl.appendChild(li);
+      }
+    }
+
+    // Elemanları Render Et
+    function renderElemanlar(listeItem) {
+      elemanListesiDiv.innerHTML = "";
+      let elemanlar = listeItem.elemanlar;
+      for (let i = 0; i < elemanlar.length; i++) {
+        let eleman = elemanlar[i];
+        let label = document.createElement("label");
+        label.classList.add("list-group-item");
+        label.innerHTML = `
+          <input class="form-check-input me-1" type="checkbox" value="">
+          ${eleman}
+          <button class="btn btn-danger" onclick="silEleman(${liste.indexOf(listeItem)}, ${i})">Sil</button>
+          <button class="btn btn-warning" onclick="duzenleEleman(${liste.indexOf(listeItem)}, ${i})">Düzenle</button>
+        `;
+        elemanListesiDiv.appendChild(label);
+      }
+    }
+
+    // Liste Sil
+    function silListe(index) {
+      liste.splice(index, 1);
+      renderListe();
+    }
+
+    // Liste Düzenle
+    function duzenleListe(index) {
+      let yeniAd = prompt("Yeni Liste Adını Girin:");
+      if (yeniAd) {
+        liste[index].ad = yeniAd;
+        renderListe();
+      }
+    }
+
+    // Eleman Sil
+    function silEleman(listeIndex, elemanIndex) {
+      liste[listeIndex].elemanlar.splice(elemanIndex, 1);
+      renderElemanlar(liste[listeIndex]);
+    }
+
+    // Eleman Düzenle
+    function duzenleEleman(listeIndex, elemanIndex) {
+      let yeniAd = prompt("Yeni Eleman Adını Girin:");
+      if (yeniAd) {
+        liste[listeIndex].elemanlar[elemanIndex] = yeniAd;
+        renderElemanlar(liste[listeIndex]);
+      }
+    }
+
+    // Başlangıçta liste ve elemanları render et
+    renderListe();
+    renderElemanlar(liste[0]); // Örnek olarak ilk listeyi render ediyoruz
+  </script>
+</body>
+</html>
