@@ -22,8 +22,9 @@ const func3=()=>{
 	func2();
 };
 
-func1();
 
+func1();
+*/
 let x=5;
 console.log(x);
 
@@ -35,7 +36,7 @@ console.log(x);
 
 x=x+5;
 console.log(x);
-*/
+/*
 const books=[
 	{name:'kitap 1',author:'yazar 1'},
 	{name:'kitap 2',author:'yazar 2'},
@@ -53,3 +54,4 @@ const addBook=(newBook,callback)=>{
 };
 addBook({name:'Kitap4',author:'yazar4'},listBooks);
 //listBooks();
+*/
