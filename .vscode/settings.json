@@ -1,3 +1,4 @@
 {
-	"editor.tabSize": 12
+	"editor.tabSize": 12,
+	"liveServer.settings.port": 5501
 }
