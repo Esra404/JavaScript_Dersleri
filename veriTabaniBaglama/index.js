@@ -3,7 +3,7 @@ var app=express();
 var connection=require("./database");
 
 app.get("/",function(req,res){
-	let sql ="SELECT * FROM employee_info";
+	let sql ="SELECT * FROM EMPLOYEE_INFO";
 	connection.query(sql,function(err,results){
 		if(err) throw err;
 		res.send(results);
