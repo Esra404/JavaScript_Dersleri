@@ -1,8 +1,8 @@
-var mysql=require("mysql");
-var connection=mysql.createConnection({
+var mysql2=require("mysql2");
+var connection=mysql2.createConnection({
 	host:"localhost",
 	database:"employee_database",
 	user:"root",
-	password:"root"
+	password:"esra123"
 });
 module.exports=connection;
